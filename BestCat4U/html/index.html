@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The BestCat4U</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">QUIZ</a>
+                </li>
+                <li>
+                    <a href="#">OVER MIJ</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="template-div">
+            <form action="" id="template">
+                <!-- tijdelijke in-line css (image: width)-->
+                <img src="../images/placeholder.png" alt="avatar-placeholder-PNG" width="200px">
+                <p>Sociale kat.</p>
+                <br>
+
+                <!-- radio knop 1 met bijhorende tekst (template) -->
+                <div class="radio-knop-groep">
+                    <label for="template-1">Ja</label>
+                    <input type="radio" name="template-radio" id="radio-knop-1" class="radio-knop" value="sociale-kat-ja">
+                </div>
+
+                <!-- radio knop 2 met bijhorende tekst (template) -->
+                <div class="radio-knop-groep">
+                    <label for="template-2">Nee</label>
+                    <input type="radio" name="template-radio" id="radio-knop-2" class="radio-knop" value="sociale-kat-nee">
+                </div>
+
+                <!-- Vorige/ Volgende knop -->
+                <div class="volgende-vorige-knop-groep">
+                    <button id="vorige-knop">Vorige</button>
+                    <button id="volgende-knop">Volgende</button>
+                </div>
+
+                <!-- submit knop -->
+                <input hidden type="submit" name="template-radio" id="verzend-knop">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="../javascript/script.js"></script>
+</body>
+</html>
