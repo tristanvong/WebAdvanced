@@ -1,5 +1,5 @@
 # WebAdvanced - BestCat4U
-## De ultieme vragenlijst voor het zoeken van een kat dat het best bij u hoort.
+## De ultieme vragenlijst voor het zoeken van een kat die het best bij u past.
 
 ### Functionaliteiten
     
