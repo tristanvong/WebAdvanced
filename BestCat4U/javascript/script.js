@@ -3,11 +3,18 @@ let button1 = document.getElementById('radio-knop-1');
 let button2 = document.getElementById('radio-knop-2');
 let buttonVorige = document.getElementById('vorige-knop');
 let buttonVolgende = document.getElementById('volgende-knop');
+let buttonVerzenden = document.getElementById('verzend-knop')
 let gebruikersInputVolledigeArray = [];
 let gebruikersInput1;
 let counter = 0;
 let tekstVraag = document.getElementById('vraag-tekst');
 let afbeeldingVeranderen = document.getElementById('image-changer')
+// const radioKnoppenDiv = document.createElement("div");
+// radioKnoppenDiv.innerHTML = "Test"
+// radioKnoppenDiv.style.backgroundColor = "blue"
+// const parentVanRadioKnoppenDiv = document.querySelector("body");
+// parentVanRadioKnoppenDiv.appendChild(radioKnoppenDiv)
+
 
 buttonVolgende.addEventListener('click', function(){
     console.log(`counter: ${counter}`)
@@ -49,7 +56,6 @@ if(counter == 0){
             gebruikersInput1 = "jaVraag1";
             gebruikersInputVolledigeArray.shift()
             gebruikersInputVolledigeArray.push(gebruikersInput1)
-
             counter++
             button1.checked = false
             button2.checked = false
@@ -154,16 +160,14 @@ if(counter == 1){
     console.log(gebruikersInputVolledigeArray.toString())
 })
 
+buttonVerzenden.addEventListener('click', function(){
+    // if (gebruikersInputVolledigeArray[0].toString() == "jaVraag1"){
+    //     console.log('test')
+    // }else {
+    //     console.log('test2')
+    // }
+})
 
 form.addEventListener('submit', function(event){
-    event.preventDefault()
-
-    // if(button1.checked){
-    //     console.log('Jij wilt een sociale kat!')
-    // }
-    // if(button2.checked){
-    //     console.log('Jij wilt geen sociale kat!')
-    // }
-
-    // console.log(gebruikersInputVolledigeArray)
+    event.preventDefault();
 })
