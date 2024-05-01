@@ -35,8 +35,12 @@ form {
     padding: 10px;
 }
 
+#radio-knop-groep-parent{
+    flex-grow: 1;
+}
+
 .radio-knop-groep label {
-    width: 30px;
+    width: 50px;
 }
 
 .volgende-vorige-knop-groep {
