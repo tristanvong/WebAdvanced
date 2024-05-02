@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The BestCat4U</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="icon" href="../images/kat-icoon-2.png">
 </head>
 <body>
     <header>
@@ -25,9 +26,12 @@
         
         <div id="template-div">
             <form action="" id="template">
-                <!-- tijdelijke in-line css (image: width)-->
-                <img src="../images/placeholder.png"alt="avatar-placeholder-PNG" height="300px" width="250px" id="image-changer">
-                <p id="vraag-tekst">Sociale kat.</p>
+                <div>
+                    <img src="../images/placeholder.png" alt="avatar-placeholder-PNG" height="200px" id="image-changer"> 
+                    <br><span id="imgCaption"></span>
+                    <button id="button-volgend-foto">Toon andere</button>
+                </div>       
+                <p id="vraag-tekst"></p>
                 <br>
 
                 <!-- template voor radio buttons (invullen via JS) -->
@@ -51,5 +55,6 @@
     </footer>
 
     <script src="../javascript/script.js"></script>
+    <script src="../javascript/foto.js"></script>
 </body>
 </html>
