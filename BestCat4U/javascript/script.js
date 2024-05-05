@@ -1,4 +1,5 @@
 let form = document.getElementById('template');
+let div = document.getElementById('template-div')
 let buttonVorige = document.getElementById('vorige-knop');
 let buttonVolgende = document.getElementById('volgende-knop');
 let buttonVerzenden = document.getElementById('verzend-knop');
@@ -23,6 +24,7 @@ let radioKnoppenDiv6 = document.createElement("div");
 let parentVanRadioKnoppenDiv = document.getElementById('radio-knop-groep-parent');
 let buttonFoto = document.getElementById("button-volgend-foto");
 let fotoTekst = document.getElementById("imgCaption");
+
 
 // Initialisatie: aanmaken van eerste radioknoppen
 
@@ -256,6 +258,18 @@ buttonVerzenden.addEventListener('click', function(){
     // }else {
     //     console.log('test2')
     // }
+
+    // Scherm leegmaken/ form verwijderen
+    div.removeChild(form);
+
+    for(let i = 1; i <= 3; i++){
+        let katResultaatDiv = document.createElement("div");
+        katResultaatDiv.style.margin = "5px"
+        katResultaatDiv.style.backgroundColor = "blue"    
+        katResultaatDiv.innerHTML = "<div><h2>naam kat</h2><img src=\"\" alt=\"\"><p>Korte omschrijveing</p></div>"
+        div.appendChild(katResultaatDiv);
+        console.log("uh")
+    }
 })
 
 form.addEventListener('submit', function(event){
