@@ -262,6 +262,7 @@ buttonVerzenden.addEventListener('click', function(){
     // Scherm leegmaken/ form verwijderen
     div.removeChild(form);
 
+    // voorbeeld
     for(let i = 1; i <= 3; i++){
         let katResultaatDiv = document.createElement("div");
         katResultaatDiv.style.margin = "5px"

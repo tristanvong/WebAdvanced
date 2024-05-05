@@ -28,22 +28,19 @@ knop.addEventListener("click", function(){
             button.innerText = "Toon Exotisch"
         }
         if(nummer == 2){
-            foto.setAttribute("src", "../images/Foreign2.jpg")
-            fotoTekst2.innerText = "Voorbeeld van Exotisch (ras: Russian Blue)"
+            foto.setAttribute("src", "../images/Foreign1.jpg")
+            fotoTekst2.innerText = "Voorbeeld van Exotisch (ras: Nebelung)"
             button.innerText = "Toon Groot"
-
         }
         if(nummer == 3){
             foto.setAttribute("src", "../images/MaineCoone1edit.jpg")
             fotoTekst2.innerText = "Voorbeeld van Groot (ras: Maine Coone)"
             button.innerText = "Toon Normaal"
-
         }
         if(nummer == 4){
             foto.setAttribute("src", "../images/Huiskat1.jpg")
             fotoTekst2.innerText = "Voorbeeld van Normaal (ras: Huiskat)"
             button.innerText = "Toon Oosters"
-
         }
         if(nummer == 5){
             foto.setAttribute("src", "../images/OrientalShorthair.jpg")
