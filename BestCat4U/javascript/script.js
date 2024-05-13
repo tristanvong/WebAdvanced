@@ -1,26 +1,33 @@
 let form = document.getElementById('template');
 let div = document.getElementById('template-div')
-let buttonVorige = document.getElementById('vorige-knop');
+// Buttons van de form (volgende vraag, verzenden/submit op het einde)
 let buttonVolgende = document.getElementById('volgende-knop');
 let buttonVerzenden = document.getElementById('verzend-knop');
+// Radio buttons (1 - 6)
 let button1;
 let button2;
 let button3;
 let button4;
 let button5;
 let button6;
+// Hier worden de keuzes opgeslagen
 let gebruikersInputVolledigeArray = [];
+// Tijdelijk gemaakt om te debuggen
 let gebruikersInput1;
+// Counter om vraag nr, bij te houden
 let counter = 1;
+// Variabelen om tekst en afbeelding (respectievelijk), te veranderen
 let tekstVraag = document.getElementById('vraag-tekst');
 let afbeeldingVeranderen = document.getElementById('image-changer');
 
+// Divs met radioknoppen voor de vragen (max 6)
 let radioKnoppenDiv1 = document.createElement("div");
 let radioKnoppenDiv2 = document.createElement("div");
 let radioKnoppenDiv3 = document.createElement("div");
 let radioKnoppenDiv4 = document.createElement("div");
 let radioKnoppenDiv5 = document.createElement("div");
 let radioKnoppenDiv6 = document.createElement("div");
+// Parent div om de radioknoppen in te steken
 let parentVanRadioKnoppenDiv = document.getElementById('radio-knop-groep-parent');
 let buttonFoto = document.getElementById("button-volgend-foto");
 let fotoTekst = document.getElementById("imgCaption");
