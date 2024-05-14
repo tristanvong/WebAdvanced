@@ -261,6 +261,7 @@ if(counter == 1){
 
 buttonVerzenden.addEventListener('click', function(){
     location.href="./resultaat.html"
+    localStorage.setItem('quiz-keuzes', gebruikersInputVolledigeArray);
     // if (gebruikersInputVolledigeArray[0].toString() == "jaVraag1"){
     //     console.log('test')
     // }else {
