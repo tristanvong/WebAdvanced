@@ -260,6 +260,7 @@ if(counter == 1){
 })
 
 buttonVerzenden.addEventListener('click', function(){
+    location.href="./resultaat.html"
     // if (gebruikersInputVolledigeArray[0].toString() == "jaVraag1"){
     //     console.log('test')
     // }else {
@@ -267,17 +268,17 @@ buttonVerzenden.addEventListener('click', function(){
     // }
 
     // Scherm leegmaken/ form verwijderen
-    div.removeChild(form);
+    // div.removeChild(form);
 
     // voorbeeld
-    for(let i = 1; i <= 3; i++){
-        let katResultaatDiv = document.createElement("div");
-        katResultaatDiv.style.margin = "5px"
-        katResultaatDiv.style.backgroundColor = "blue"    
-        katResultaatDiv.innerHTML = "<div><h2>naam kat</h2><img src=\"\" alt=\"\"><p>Korte omschrijveing</p></div>"
-        div.appendChild(katResultaatDiv);
-        console.log("uh")
-    }
+    // for(let i = 1; i <= 3; i++){
+    //     let katResultaatDiv = document.createElement("div");
+    //     katResultaatDiv.style.margin = "5px"
+    //     katResultaatDiv.style.backgroundColor = "blue"    
+    //     katResultaatDiv.innerHTML = "<div><h2>naam kat</h2><img src=\"\" alt=\"\"><p>Korte omschrijveing</p></div>"
+    //     div.appendChild(katResultaatDiv);
+    //     console.log("uh")
+    // }
 })
 
 form.addEventListener('submit', function(event){
