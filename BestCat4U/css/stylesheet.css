@@ -56,8 +56,8 @@ form {
     font-size: 14px;
 }
 
-#volgende-knop, #verzend-knop {
-    width: 100px;
+#volgende-knop, #verzend-knop, button {
+    width: 150px;
     height: 25px;
     background-color: lightblue;
     border: none;
