@@ -261,7 +261,16 @@ if(counter == 1){
 
 buttonVerzenden.addEventListener('click', function(){
     location.href="./resultaat.html"
-    localStorage.setItem('quiz-keuzes', gebruikersInputVolledigeArray);
+    // Destructuring
+    const [keuze1, keuze2, keuze3] = gebruikersInputVolledigeArray;
+    localStorage.setItem('quiz-keuze1', keuze1);
+    localStorage.setItem('quiz-keuze2', keuze2);
+    localStorage.setItem('quiz-keuze3', keuze3);
+    // localStorage.setItem('quiz-keuzes', gebruikersInputVolledigeArray);
+
+    for (let i = 0; i < gebruikersInputVolledigeArray.length; i++){
+        console.log(gebruikersInputVolledigeArray[i]);
+    }
     // if (gebruikersInputVolledigeArray[0].toString() == "jaVraag1"){
     //     console.log('test')
     // }else {
