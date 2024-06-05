@@ -260,7 +260,14 @@ if(counter == 1){
 })
 
 buttonVerzenden.addEventListener('click', function(){
-    location.href="./resultaat.html"
+    // location.href="./resultaat.html"
+    maakPaginaLeegBehalveHeader();
+    function maakPaginaLeegBehalveHeader() {
+        let pagina = document.querySelector("main");    
+        // Clear the main content and footer
+        pagina.innerHTML = "";
+    }
+    
     // Destructuring
     const [keuze1, keuze2, keuze3] = gebruikersInputVolledigeArray;
     localStorage.setItem('quiz-keuze1', keuze1);
