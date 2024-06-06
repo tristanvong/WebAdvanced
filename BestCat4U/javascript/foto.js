@@ -90,13 +90,17 @@ async function veranderFotoKat(grabVraag) {
         }
     }
 
-    try {
-        const fotoUrl = await haalKatFotoOp(ras);
-        foto.setAttribute("src", fotoUrl);
-        fotoTekst2.innerText = beschrijving;
-    } catch (error) {
-        console.error("Er was een fout bij het ophalen van de foto:", error);
-    }
+    haalKatFotoOp(ras)
+        .then((fotoUrl) => {
+            foto.setAttribute("src", fotoUrl);
+            fotoTekst2.innerText = beschrijving;
+        })
+        .catch((error) => {
+            console.error("Er was een fout bij het ophalen van de foto:", error);
+        })
+        .finally(() => {
+            console.log(`Foto succesvol opgehaald voor ras (afkorting): ${ras}, indien er een error was liep er iets fout (zie error)`);
+        });
 }
 
 knop.addEventListener("click", function() {
