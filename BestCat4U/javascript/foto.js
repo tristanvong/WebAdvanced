@@ -9,15 +9,17 @@ let button;
 let fotoTekst2 = document.getElementById("imgCaption");
 let nummer = 0;
 
-const haalKatFotoOp = async (ras) => {
-    try {
-        const response = await fetch(`${API_URL}?breed_ids=${ras}`);
-        const data = await response.json();
-        return data[0].url;
-    } catch (error) {
-        console.error("Er was een error:", error);
-        return "../images/placeholder.jpg";
-    }
+const haalKatFotoOp = (ras) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await fetch(`${API_URL}?breed_ids=${ras}`);
+            const data = await response.json();
+            resolve(data[0].url);
+        } catch (error) {
+            console.error("Er was een error:", error);
+            reject(new Error("De API heeft niet gereageerd. Probeer het later opnieuw."));
+        }
+    });
 }
 
 async function veranderFotoKat(grabVraag) {
@@ -88,9 +90,13 @@ async function veranderFotoKat(grabVraag) {
         }
     }
 
-    const fotoUrl = await haalKatFotoOp(ras);
-    foto.setAttribute("src", fotoUrl);
-    fotoTekst2.innerText = beschrijving;
+    try {
+        const fotoUrl = await haalKatFotoOp(ras);
+        foto.setAttribute("src", fotoUrl);
+        fotoTekst2.innerText = beschrijving;
+    } catch (error) {
+        console.error("Er was een fout bij het ophalen van de foto:", error);
+    }
 }
 
 knop.addEventListener("click", function() {

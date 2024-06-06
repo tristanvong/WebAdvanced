@@ -260,6 +260,15 @@ if(counter == 1){
 })
 
 buttonVerzenden.addEventListener('click', function(){
+// recycleerd van resultaat.js, misschien bruikbaar, ga ik later bekijken
+// let titel = document.getElementById('keuze-gebruiker');
+// console.log(titel)
+
+// console.log(localStorage.getItem('quiz-keuzes').split(','))
+// let resultaten= localStorage.getItem('quiz-keuzes').split(',');
+
+// titel.innerText = resultaten
+
     // location.href="./resultaat.html"
     maakPaginaLeegBehalveHeader();
     function maakPaginaLeegBehalveHeader() {

@@ -63,6 +63,17 @@ form {
     border: none;
     margin: 5px;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#button-volgend-foto {
+    transition: transform 10s ease;
+}
+
+#volgende-knop:hover, #verzend-knop:hover, button:hover {
+    background-color: lightgreen;
+    transform: rotateY(360deg);
 }
 
 #radio-knop-groep-parent {
