@@ -19,7 +19,7 @@ div {
 form {
     border-radius: 5px;
     background-color: grey;
-    width: 500px;
+    width: 80vw;
 
     display: flex;
     flex-direction: column;
@@ -87,4 +87,15 @@ form {
     background-color: rgb(158, 156, 156);
     margin: 1px;
     height: 40px;
+}
+
+#errorBerichtenValidatie {
+    color: rgb(178, 24, 24);
+    font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+    form {
+        width: 500px;
+    }
 }

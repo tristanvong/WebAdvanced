@@ -1,3 +1,5 @@
+import { haalKatFotoOp } from './foto.js';
+
 let form = document.getElementById('template');
 let div = document.getElementById('template-div')
 // Buttons van de form (volgende vraag, verzenden/submit op het einde)
@@ -32,6 +34,9 @@ let parentVanRadioKnoppenDiv = document.getElementById('radio-knop-groep-parent'
 let buttonFoto = document.getElementById("button-volgend-foto");
 let fotoTekst = document.getElementById("imgCaption");
 
+let formValidatieTekst = document.getElementById('errorBerichtenValidatie');
+let aantalKeerGeklikt = 0;
+
 
 // Initialisatie: aanmaken van eerste radioknoppen
 
@@ -41,8 +46,19 @@ buttonVerzenden.toggleAttribute("hidden");
 function resetter(county){
 
     if (county == 1){
+
+        (async function() {
+            try {
+                const ras = "bsho";
+                const fotoUrl = await haalKatFotoOp(ras);
+                afbeeldingVeranderen.setAttribute("src", fotoUrl);
+                fotoTekst.innerText = "Voorbeeld van Cobby kenmerken: klein, bolvormig. (ras: British Shorthair)";
+            } catch (error) {
+                console.error("Er was een fout bij het ophalen van de foto:", error);
+            }
+        })();
         tekstVraag.innerText = "Welk lichaamstype verkiest u?";
-        afbeeldingVeranderen.setAttribute('src', '../images/Cobby1.jpg');
+        // afbeeldingVeranderen.setAttribute('src', '../images/Cobby1.jpg');
         
         for(let i = 1; i <= 6; i++){
     
@@ -126,7 +142,18 @@ function resetter(county){
                 button5 = document.getElementById("button-5");
             }
         }
-        fotoTekst.innerText = "Voorbeeld van Kaal";
+
+        (async function() {
+            try {
+                const ras = "sphy";
+                const fotoUrl = await haalKatFotoOp(ras);
+                afbeeldingVeranderen.setAttribute("src", fotoUrl);
+                fotoTekst.innerText = "Voorbeeld van kaal (ras: Sphynx)";
+            } catch (error) {
+                console.error("Er was een fout bij het ophalen van de foto:", error);
+            }
+        })();
+        // fotoTekst.innerText = "Voorbeeld van Kaal";
         buttonFoto.innerText = "Toon kort";
     }
 
@@ -162,7 +189,7 @@ buttonVolgende.addEventListener('click', function(){
 // Vraag 1: Welk lichaamstype wilt u?
 if(counter == 1){
         tekstVraag.innerText = "Welk lichaamstype verkiest u?";
-        afbeeldingVeranderen.setAttribute('src', "../images/Cobby1.jpg");
+        // afbeeldingVeranderen.setAttribute('src', "../images/Cobby1.jpg");
 
         if(gebruikersInputVolledigeArray.indexOf("Cobby") == -1 && gebruikersInputVolledigeArray.indexOf("Dwerg") == -1 && gebruikersInputVolledigeArray.indexOf("Foreign") == -1 && gebruikersInputVolledigeArray.indexOf("Groot") == -1 && gebruikersInputVolledigeArray.indexOf("Normaal") == -1 && gebruikersInputVolledigeArray.indexOf("Oriental") == -1) {
                 if(button1.checked){
@@ -194,6 +221,9 @@ if(counter == 1){
                     button4.checked = false;
                     button5.checked = false;
                     button6.checked = false;
+                    formValidatieTekst.innerText = "";
+                } else {
+                    formValidatieTekst.innerText = "Gelieve een keuze te maken";
                 }
         } 
     }
@@ -201,7 +231,7 @@ if(counter == 1){
 // Vraag 2: Hoe moet de haarlengte zijn?
     if(counter == 2){
         tekstVraag.innerText = "Hoe moet de haarlengte zijn?";
-        afbeeldingVeranderen.setAttribute('src', "../images/Sphynx Kat.jpg");
+        // afbeeldingVeranderen.setAttribute('src', "../images/Sphynx Kat.jpg");
 
         if(gebruikersInputVolledigeArray.indexOf("Kort") == -1 && gebruikersInputVolledigeArray.indexOf("Medium") == -1 && gebruikersInputVolledigeArray.indexOf("Lang") == -1 && gebruikersInputVolledigeArray.indexOf("Rex") == -1){
             if(button1.checked){
@@ -228,8 +258,13 @@ if(counter == 1){
                 button3.checked = false;
                 button4.checked = false;
                 button5.checked = false;
+                formValidatieTekst.innerText = "";
+            } else if (aantalKeerGeklikt !== 0){
+                formValidatieTekst.innerText = "Gelieve een keuze te maken";
             }
+            aantalKeerGeklikt++;
         }
+        aantalKeerGeklikt = 0;
     }
 
     // Vraag 3: Hebt u jonge kinderen (-12 jaar)?
@@ -250,8 +285,12 @@ if(counter == 1){
                 gebruikersInputVolledigeArray.push(gebruikersInput1);
                 buttonVolgende.toggleAttribute("hidden");
                 buttonVerzenden.toggleAttribute("hidden");
+                formValidatieTekst.innerText = "";
+            } else if (aantalKeerGeklikt) {
+                formValidatieTekst.innerText = "Gelieve een keuze te maken";
             }
         }
+        aantalKeerGeklikt++;
     }
 
     console.log(`counter einde: ${counter}`)

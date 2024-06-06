@@ -9,7 +9,7 @@ let button;
 let fotoTekst2 = document.getElementById("imgCaption");
 let nummer = 0;
 
-const haalKatFotoOp = (ras) => {
+export const haalKatFotoOp = (ras) => {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(`${API_URL}?breed_ids=${ras}`);
