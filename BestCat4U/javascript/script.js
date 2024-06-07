@@ -38,6 +38,17 @@ let formValidatieTekst = document.getElementById('errorBerichtenValidatie');
 let aantalKeerGeklikt = 0;
 let aantalKeerGeklikt2 = 0;
 let mainPagina = document.querySelector("main");
+let huidigJaarElement = document.getElementById("huidigJaar");
+let quizKnop = document.getElementById('quizKnop');
+let overMijKnop = document.getElementById('overMij');
+
+function getDitJaar() {
+    const datumNu = new Date();
+    const jaarNu = datumNu.getFullYear();
+    return jaarNu;
+}
+
+huidigJaarElement.innerText = getDitJaar();
 
 async function maakKatElement(naamKat, ras, omschrijving) {
     try {
@@ -251,6 +262,9 @@ if(counter == 1){
         // afbeeldingVeranderen.setAttribute('src', "../images/Sphynx Kat.jpg");
 
         if(gebruikersInputVolledigeArray.indexOf("Kaal") == -1 && gebruikersInputVolledigeArray.indexOf("Kort") == -1 && gebruikersInputVolledigeArray.indexOf("Medium") == -1 && gebruikersInputVolledigeArray.indexOf("Lang") == -1 && gebruikersInputVolledigeArray.indexOf("Rex") == -1){
+            if (aantalKeerGeklikt !== 0){
+                formValidatieTekst.innerText = "Gelieve een keuze te maken";
+            }
             if(button1.checked){
                 gebruikersInput1 = "Kaal";
             }
@@ -298,9 +312,9 @@ if(counter == 1){
                 }
             }
 
-            if (aantalKeerGeklikt !== 0){
-                formValidatieTekst.innerText = "Gelieve een keuze te maken";
-            }
+            // if (aantalKeerGeklikt !== 0){
+            //     formValidatieTekst.innerText = "Gelieve een keuze te maken";
+            // }
 
             aantalKeerGeklikt++;
         }
@@ -364,17 +378,173 @@ buttonVerzenden.addEventListener('click', function(){
     mainPagina.appendChild(keuzesParagraaf);
 
     // Voorbeeld: TODO: werk morgen af
-    // if (localStorage.getItem('quiz-keuze1') == "Cobby" && localStorage.getItem('quiz-keuze2') == "Kaal" && localStorage.getItem('quiz-keuze3') == "jaVraag3"){
-    // }
 
-    // maakKatElement("naam kat", "bsho", "korte omschrijving")
-    // .then((element) => {
-    //     if (element) {
-    //         mainPagina.appendChild(element);
-    //     } else {
-    //         console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
-    //     }
-    // });
+    if (localStorage.getItem('quiz-keuze1') == "Cobby" && localStorage.getItem('quiz-keuze2') == "Kort" && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // british shorthair
+        maakKatElement("British Shorthair", "bsho", "De Brits Korthaar is een zeer aangename kat om als gezelschap te hebben, en is gemakkelijk in de omgang en rustig. De Brit is een zeer trouwe, liefdevolle kat en hecht zich aan elk gezinslid. Hoewel ze graag speelt, heeft ze niet elk uur aandacht nodig. Als ze in de stemming is om te spelen, zal ze iemand opzoeken en een speeltje naar die persoon brengen. De Brit kan ook goed alleen spelen en is dus een goede metgezel voor alleenstaanden. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+        // american shorthair
+        maakKatElement("American Shorthair", "asho", "De Amerikaanse Korthaar staat bekend om zijn lange levensduur, robuuste gezondheid, goede uiterlijk, lieve persoonlijkheid en vriendelijkheid met kinderen, honden en andere huisdieren. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Cobby" && localStorage.getItem('quiz-keuze2') == "Lang" && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // british longhair
+        maakKatElement("British Longhair", "bslo", "De Britse Langhaar is een erg relaxte kat, die vaak als erg onafhankelijk wordt ervaren, hoewel ze het gezelschap van een even relaxte en gelijkgestemde kat erg op prijs stellen. Het is een aanhankelijk ras, maar wel op hun eigen voorwaarden en ze verkiezen eerder om bij hun baasjes te komen zitten dan om opgepakt te worden. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Dwerg" && (localStorage.getItem('quiz-keuze2') == "Kort" || localStorage.getItem('quiz-keuze2') == "Lang") && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // munchkin
+        maakKatElement("Munchkin", "munc", "De Munchkin is een uitgaande kat die graag wordt aangeraakt. Ze heeft veel energie en is sneller en beweeglijker dan ze eruit ziet. De korte poten lijken geen belemmering te zijn voor hun ren- en springvermogen. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Foreign" && (localStorage.getItem('quiz-keuze2') == "Medium") && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // nebelung
+        maakKatElement("Nebelung", "nebe", "De Nebelung heeft misschien een terughoudend karakter, maar ze houdt van spelen (ze is vooral dol op apporteren) en springt of klimt graag naar hoge plekken waar ze op haar gemak mensen en situaties kan bestuderen voordat ze beslist of ze zich ermee wil bemoeien. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Groot" && (localStorage.getItem('quiz-keuze2') == "Medium" || localStorage.getItem('quiz-keuze2') == "Lang") && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // maine coon
+        maakKatElement("Maine Coon", "mcoo", "Ze staan bekend om hun grootte en luxueuze lange vacht Maine Coons worden beschouwd als een zachtaardige reus. De goedmoedige en welwillende Maine Coon past zich goed aan vele levensstijlen en persoonlijkheden aan. Ze is graag bij mensen en heeft de gewoonte hen te volgen, maar is niet behoeftig. De meeste Maine Coons houden van water en ze kunnen heel goed zwemmen. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Normaal" && (localStorage.getItem('quiz-keuze2') == "Kort") && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // australian mist
+        maakKatElement("Australian Mist", "amis", "De Australian Mist gedijt goed bij menselijk gezelschap. Deze vriendelijke katachtigen tolereren zelfs de allerkleinsten, spelen graag spelletjes en maken deel uit van de drukte van een druk huishouden. Ze zijn vermakelijke metgezellen voor mensen van alle leeftijden en blijven graag binnen tussen zonsopgang en zonsondergang of zijn volledig als huisdier te gebruiken. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Normaal" && (localStorage.getItem('quiz-keuze2') == "Rex") && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // laperm
+        maakKatElement("LaPerm", "lape", "LaPerms zijn zachtaardig en aanhankelijk, maar ook erg actief. In tegenstelling tot veel actieve rassen is de LaPerm ook heel tevreden als schootkat. De LaPerm zal vaak uw voorbeeld volgen; dat wil zeggen, als ze druk aan het spelen zijn en u besluit te gaan zitten en te ontspannen, pakt u gewoon uw LaPerm op en gaat u erbij zitten, en hij zal op uw schoot blijven zitten en de aandacht die u hem geeft verslinden. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Oriental" && (localStorage.getItem('quiz-keuze2') == "Kort") && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // oriental shorthair
+        maakKatElement("Oriental", "orie", "Orientals zijn gepassioneerd door de mensen in hun leven. Ze raken extreem gehecht aan hun mensen, dus wees voorbereid op een levenslange verbintenis. Als je niet beschikbaar bent om haar te vermaken, zal een Oosterse zich vermaken door bovenop de koelkast te springen, laden te openen en nieuwe schuilplaatsen te zoeken. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+
+    if (localStorage.getItem('quiz-keuze1') == "Oriental" && (localStorage.getItem('quiz-keuze2') == "Kaal") && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+        // sphynx
+        maakKatElement("Sphynx", "sphy", "De Sphynx is een intelligent, nieuwsgierig, uiterst vriendelijk en mensgericht ras. Sphynxen begroeten hun baasjes vaak bij de voordeur, met duidelijke opwinding en blijdschap. Ze heeft een onverwacht gevoel voor humor dat vaak in strijd is met haar norse uitdrukking. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+    }
+})
+
+overMijKnop.addEventListener('click', function(){
+
+    function mijnFavorieteFilmen(...films) {
+    return films.flat().join(", ");
+    }
+
+    const filmArray = ["Breaking Bad", "Top Gun Maverick"];
+    const filmArray2 = ["One Piece Film: Red", "Interstellar", "Men in Black"];
+
+    console.log(mijnFavorieteFilmen(filmArray, filmArray2));
+    maakPaginaLeegBehalveHeader();
+    function maakPaginaLeegBehalveHeader() {
+        let pagina = document.querySelector("main");    
+        pagina.innerHTML = "";
+    }
+
+    let profielFotoContainer = document.createElement("div");
+    profielFotoContainer.setAttribute("class", "profiel-foto-container");
+    let profielFoto = document.createElement("img");
+    profielFoto.setAttribute("src", "../images/profielFotoLinkedIn.jpg");
+    profielFoto.setAttribute("class", "profiel-foto");
+    
+    mainPagina.appendChild(profielFotoContainer);
+    profielFotoContainer.appendChild(profielFoto);
+
+    let paragraaf = document.createElement("p");
+    paragraaf.setAttribute("class", "over-mij-tekst");
+    paragraaf.innerHTML = `
+    Hallo ik ben Tristan, eerste jaarsstudent op de opleiding Toegepaste Informatica aan de EhB.<br>
+    Ik vind deze films leuk: ${mijnFavorieteFilmen(filmArray, filmArray2)} <br> <br>
+    Ik ben een grote katliefhebber en heb gekozen om een quiz te maken dat het makkelijk maakt om een kat te kiezen die bij je past.`;
+    mainPagina.appendChild(paragraaf);
+
+    let fotoStreepje = document.createElement("img");
+    fotoStreepje.setAttribute("src", "../images/FotoStreepje.jpg");
+    fotoStreepje.setAttribute("class", "profiel-foto");
+    mainPagina.appendChild(fotoStreepje);
+
+    let paragraaf2 = document.createElement("p");
+    paragraaf2.setAttribute("class", "over-mij-tekst");
+    paragraaf2.innerHTML = `Hierboven zie je een foto van mijn kat <i>Streepje</i>.`;
+    mainPagina.appendChild(paragraaf2);
+
+
+})
+
+quizKnop.addEventListener('click', function(){
+    window.location.href = "index.html";
 })
 
 form.addEventListener('submit', function(event){

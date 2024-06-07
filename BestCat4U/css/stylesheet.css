@@ -1,14 +1,41 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../images/FotoStreepje.jpg");
-    background-repeat: repeat;
-    background-size: 200px 200px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 nav  {
+    height: 100px;
+    background-color: red;
     display: flex;
     flex-direction: row;
     justify-content: right;
+    align-items: center;
+    margin-bottom: 50px;
+    background-image: url("../images/bestcat4ulogo.jpg");
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+nav li {
+    padding: 10px;
+}
+
+nav li:hover {
+    background-color: darkred;
+    cursor: pointer;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0; 
+    margin: 0; 
 }
 
 div {
@@ -30,6 +57,7 @@ form {
     justify-content: center;
     align-items: center;
     padding: 10px 0px;
+    box-shadow: 2px 2px 40px black;
 }
 
 .radio-knop-groep {
@@ -113,14 +141,70 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 80vw;
+    width: 60vw;
     border-radius: 5px;
+    margin: 5px;
+}
+
+.omschrijvingKat {
+    margin: 10px;
+    text-align: center;
 }
 
 .fotoKat {
     height: 200px;
 }
 
+#vraag-tekst {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 50px;
+    background-color: red;
+    height: 10vh;
+    top: 0;
+    bottom: 0;
+
+    display: flex;
+    width: 100%;
+    flex: 1 0 50%;
+}
+
+#div-footer-links {
+    flex: 1;
+    align-items: start;
+    padding: 0px 10px;
+
+}
+#div-footer-rechts {
+    flex: 1;
+    align-items: end;
+    padding: 0px 10px;
+
+}
+
+.profiel-foto-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.profiel-foto {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #000000; 
+}
+
+.over-mij-tekst {
+    margin: 20px;
+    text-align: center;
+    color: red;
+}
 @media screen and (min-width: 600px) {
     form {
         width: 500px;
