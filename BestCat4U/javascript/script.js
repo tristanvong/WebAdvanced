@@ -36,7 +36,24 @@ let fotoTekst = document.getElementById("imgCaption");
 
 let formValidatieTekst = document.getElementById('errorBerichtenValidatie');
 let aantalKeerGeklikt = 0;
+let aantalKeerGeklikt2 = 0;
+let mainPagina = document.querySelector("main");
 
+async function maakKatElement(naamKat, ras, omschrijving) {
+    try {
+        const fotoUrl = await haalKatFotoOp(ras);
+        let katElement = document.createElement("div");
+        katElement.setAttribute("class", "katContainer");
+        katElement.innerHTML = 
+            `<h2 class="naamKat">${naamKat}</h2>
+            <img src="${fotoUrl}" alt="${naamKat}" class="fotoKat">
+            <p class="omschrijvingKat">${omschrijving}</p>`;
+        return katElement;
+    } catch (error) {
+        console.error("Er was een fout bij het ophalen van de foto:", error);
+        return null;
+    }
+}
 
 // Initialisatie: aanmaken van eerste radioknoppen
 
@@ -233,7 +250,7 @@ if(counter == 1){
         tekstVraag.innerText = "Hoe moet de haarlengte zijn?";
         // afbeeldingVeranderen.setAttribute('src', "../images/Sphynx Kat.jpg");
 
-        if(gebruikersInputVolledigeArray.indexOf("Kort") == -1 && gebruikersInputVolledigeArray.indexOf("Medium") == -1 && gebruikersInputVolledigeArray.indexOf("Lang") == -1 && gebruikersInputVolledigeArray.indexOf("Rex") == -1){
+        if(gebruikersInputVolledigeArray.indexOf("Kaal") == -1 && gebruikersInputVolledigeArray.indexOf("Kort") == -1 && gebruikersInputVolledigeArray.indexOf("Medium") == -1 && gebruikersInputVolledigeArray.indexOf("Lang") == -1 && gebruikersInputVolledigeArray.indexOf("Rex") == -1){
             if(button1.checked){
                 gebruikersInput1 = "Kaal";
             }
@@ -250,6 +267,8 @@ if(counter == 1){
                 gebruikersInput1 = "Rex";
             }
             if(gebruikersInput1 == "Kaal" || gebruikersInput1 == "Kort" || gebruikersInput1 == "Medium" || gebruikersInput1 == "Lang" || gebruikersInput1 == "Rex"){
+                // condities die geacepteerd worden
+                if ((gebruikersInputVolledigeArray[0] == "Cobby" && (gebruikersInput1 == "Kort" || gebruikersInput1 == "Lang")) || (gebruikersInputVolledigeArray[0] == "Dwerg" && (gebruikersInput1 == "Kort" || gebruikersInput1 == "Lang")) || (gebruikersInputVolledigeArray[0] == "Foreign" && gebruikersInput1 == "Medium") || (gebruikersInputVolledigeArray[0] == "Groot" && (gebruikersInput1 == "Medium" || gebruikersInput1 == "Lang")) || (gebruikersInputVolledigeArray[0] == "Oriental" && (gebruikersInput1 == "Kaal" || gebruikersInput1 == "Kort"))){
                 gebruikersInputVolledigeArray.push(gebruikersInput1)
                 counter++;
                 resetter(3);
@@ -259,17 +278,37 @@ if(counter == 1){
                 button4.checked = false;
                 button5.checked = false;
                 formValidatieTekst.innerText = "";
-            } else if (aantalKeerGeklikt !== 0){
+                }
+
+                // condities die niet geacepteerd worden
+                if ((gebruikersInputVolledigeArray[0] == "Cobby" || gebruikersInputVolledigeArray[0] == "Dwerg" || gebruikersInputVolledigeArray[0] == "Foreign" || gebruikersInputVolledigeArray[0] == "Groot" || gebruikersInputVolledigeArray[0] == "Normaal") && gebruikersInput1 == "Kaal"){
+                    formValidatieTekst.innerText = `Kaal is niet mogelijk bij de keuze van lichaamstype: ${gebruikersInputVolledigeArray[0]}`;
+                } 
+                if ((gebruikersInputVolledigeArray[0] == "Foreign" || gebruikersInputVolledigeArray[0] == "Groot") && gebruikersInput1 == "Kort"){
+                    formValidatieTekst.innerText = `Kort haar is niet mogelijk bij de keuze van lichaamstype: ${gebruikersInputVolledigeArray[0]}`;
+                } 
+                if ((gebruikersInputVolledigeArray[0] == "Cobby" || gebruikersInputVolledigeArray[0] == "Dwerg" || gebruikersInputVolledigeArray[0] == "Normaal" || gebruikersInputVolledigeArray[0] == "Oriental") && gebruikersInput1 == "Medium"){
+                    formValidatieTekst.innerText = `Normale haarlengte is niet mogelijk bij de keuze van lichaamstype: ${gebruikersInputVolledigeArray[0]}`;
+                }
+                if ((gebruikersInputVolledigeArray[0] == "Foreign" || gebruikersInputVolledigeArray[0] == "Normaal" || gebruikersInputVolledigeArray[0] == "Oriental") && gebruikersInput1 == "Lang"){
+                    formValidatieTekst.innerText = `Lang haar is niet mogelijk bij de keuze van lichaamstype: ${gebruikersInputVolledigeArray[0]}`;
+                }
+                if ((gebruikersInputVolledigeArray[0] == "Cobby" || gebruikersInputVolledigeArray[0] == "Dwerg" || gebruikersInputVolledigeArray[0] == "Foreign" || gebruikersInputVolledigeArray[0] == "Groot" || gebruikersInputVolledigeArray[0] == "Oriental") && gebruikersInput1 == "Rex"){
+                    formValidatieTekst.innerText = `Gekruld haar (rex) is niet mogelijk bij de keuze van lichaamstype: ${gebruikersInputVolledigeArray[0]}`;
+                }
+            }
+
+            if (aantalKeerGeklikt !== 0){
                 formValidatieTekst.innerText = "Gelieve een keuze te maken";
             }
+
             aantalKeerGeklikt++;
         }
-        aantalKeerGeklikt = 0;
     }
 
     // Vraag 3: Hebt u jonge kinderen (-12 jaar)?
     if(counter == 3){
-
+        formValidatieTekst.innerText = "";
         tekstVraag.innerText = "Hebt u jonge kinderen (-12 jaar)?";
         afbeeldingVeranderen.setAttribute('src', "../images/placeholder.png");
 
@@ -286,33 +325,23 @@ if(counter == 1){
                 buttonVolgende.toggleAttribute("hidden");
                 buttonVerzenden.toggleAttribute("hidden");
                 formValidatieTekst.innerText = "";
-            } else if (aantalKeerGeklikt) {
+            } else if (aantalKeerGeklikt2 !== 0){
                 formValidatieTekst.innerText = "Gelieve een keuze te maken";
             }
         }
-        aantalKeerGeklikt++;
+        aantalKeerGeklikt2++;
     }
 
     console.log(`counter einde: ${counter}`)
     console.log(gebruikersInputVolledigeArray);
     console.log(gebruikersInputVolledigeArray.toString());
+    console.log(`aantalkeren geklikt: ${aantalKeerGeklikt}`)
 })
 
 buttonVerzenden.addEventListener('click', function(){
-// recycleerd van resultaat.js, misschien bruikbaar, ga ik later bekijken
-// let titel = document.getElementById('keuze-gebruiker');
-// console.log(titel)
-
-// console.log(localStorage.getItem('quiz-keuzes').split(','))
-// let resultaten= localStorage.getItem('quiz-keuzes').split(',');
-
-// titel.innerText = resultaten
-
-    // location.href="./resultaat.html"
     maakPaginaLeegBehalveHeader();
     function maakPaginaLeegBehalveHeader() {
         let pagina = document.querySelector("main");    
-        // Clear the main content and footer
         pagina.innerHTML = "";
     }
     
@@ -323,27 +352,29 @@ buttonVerzenden.addEventListener('click', function(){
     localStorage.setItem('quiz-keuze3', keuze3);
     // localStorage.setItem('quiz-keuzes', gebruikersInputVolledigeArray);
 
+    let keuzesParagraaf = document.createElement("p");
+    let keuzesTekst = "";
+
     for (let i = 0; i < gebruikersInputVolledigeArray.length; i++){
-        console.log(gebruikersInputVolledigeArray[i]);
+        console.log(`Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}`);
+        keuzesTekst += `Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}, `;
     }
-    // if (gebruikersInputVolledigeArray[0].toString() == "jaVraag1"){
-    //     console.log('test')
-    // }else {
-    //     console.log('test2')
+
+    keuzesParagraaf.innerText = keuzesTekst;
+    mainPagina.appendChild(keuzesParagraaf);
+
+    // Voorbeeld: TODO: werk morgen af
+    // if (localStorage.getItem('quiz-keuze1') == "Cobby" && localStorage.getItem('quiz-keuze2') == "Kaal" && localStorage.getItem('quiz-keuze3') == "jaVraag3"){
     // }
 
-    // Scherm leegmaken/ form verwijderen
-    // div.removeChild(form);
-
-    // voorbeeld
-    // for(let i = 1; i <= 3; i++){
-    //     let katResultaatDiv = document.createElement("div");
-    //     katResultaatDiv.style.margin = "5px"
-    //     katResultaatDiv.style.backgroundColor = "blue"    
-    //     katResultaatDiv.innerHTML = "<div><h2>naam kat</h2><img src=\"\" alt=\"\"><p>Korte omschrijveing</p></div>"
-    //     div.appendChild(katResultaatDiv);
-    //     console.log("uh")
-    // }
+    // maakKatElement("naam kat", "bsho", "korte omschrijving")
+    // .then((element) => {
+    //     if (element) {
+    //         mainPagina.appendChild(element);
+    //     } else {
+    //         console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+    //     }
+    // });
 })
 
 form.addEventListener('submit', function(event){
