@@ -212,7 +212,7 @@ function resetter(county){
 }
 
 buttonVolgende.addEventListener('click', function(){
-    console.log(`counter: ${counter}`);
+    // console.log(`counter: ${counter}`);
 
 // Vraag 1: Welk lichaamstype wilt u?
 if(counter == 1){
@@ -346,10 +346,10 @@ if(counter == 1){
         aantalKeerGeklikt2++;
     }
 
-    console.log(`counter einde: ${counter}`)
-    console.log(gebruikersInputVolledigeArray);
-    console.log(gebruikersInputVolledigeArray.toString());
-    console.log(`aantalkeren geklikt: ${aantalKeerGeklikt}`)
+    // console.log(`counter einde: ${counter}`)
+    // console.log(gebruikersInputVolledigeArray);
+    // console.log(gebruikersInputVolledigeArray.toString());
+    // console.log(`aantalkeren geklikt: ${aantalKeerGeklikt}`)
 })
 
 buttonVerzenden.addEventListener('click', function(){
@@ -370,7 +370,7 @@ buttonVerzenden.addEventListener('click', function(){
     let keuzesTekst = "";
 
     for (let i = 0; i < gebruikersInputVolledigeArray.length; i++){
-        console.log(`Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}`);
+        // console.log(`Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}`);
         keuzesTekst += `Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}, `;
     }
 
@@ -506,7 +506,7 @@ overMijKnop.addEventListener('click', function(){
     const filmArray = ["Breaking Bad", "Top Gun Maverick"];
     const filmArray2 = ["One Piece Film: Red", "Interstellar", "Men in Black"];
 
-    console.log(mijnFavorieteFilmen(filmArray, filmArray2));
+    // console.log(mijnFavorieteFilmen(filmArray, filmArray2));
     maakPaginaLeegBehalveHeader();
     function maakPaginaLeegBehalveHeader() {
         let pagina = document.querySelector("main");    
