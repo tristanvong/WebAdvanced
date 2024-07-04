@@ -380,6 +380,17 @@ buttonVerzenden.addEventListener('click', function(){
     // Voorbeeld: TODO: werk morgen af
 
     if (localStorage.getItem('quiz-keuze1') == "Cobby" && localStorage.getItem('quiz-keuze2') == "Kort" && (localStorage.getItem('quiz-keuze3') == "jaVraag3" || localStorage.getItem('quiz-keuze3') == "neeVraag3")){
+
+        // abyssinian
+        maakKatElement("Abyssinian/ Abessijn", "abys", "De Abessijn is makkelijk te verzorgen en een plezier om in huis te hebben. Het zijn aanhankelijke katten en ze houden van zowel mensen als andere dieren. (Bron: TheCatAPI)")
+        .then((element) => {
+            if (element) {
+                mainPagina.appendChild(element);
+            } else {
+                console.log("Er trad een fout op bij het aanmaken van het katelement, probeer binnen enkele ogenblikken opnieuw.")
+            }
+        });
+
         // british shorthair
         maakKatElement("British Shorthair", "bsho", "De Brits Korthaar is een zeer aangename kat om als gezelschap te hebben, en is gemakkelijk in de omgang en rustig. De Brit is een zeer trouwe, liefdevolle kat en hecht zich aan elk gezinslid. Hoewel ze graag speelt, heeft ze niet elk uur aandacht nodig. Als ze in de stemming is om te spelen, zal ze iemand opzoeken en een speeltje naar die persoon brengen. De Brit kan ook goed alleen spelen en is dus een goede metgezel voor alleenstaanden. (Bron: TheCatAPI)")
         .then((element) => {
