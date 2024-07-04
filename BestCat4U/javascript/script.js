@@ -371,7 +371,22 @@ buttonVerzenden.addEventListener('click', function(){
 
     for (let i = 0; i < gebruikersInputVolledigeArray.length; i++){
         // console.log(`Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}`);
-        keuzesTekst += `Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}, `;
+        console.log(gebruikersInputVolledigeArray)
+        
+        if (i == 2){
+            if (gebruikersInputVolledigeArray[2] == "jaVraag3"){
+                gebruikersInputVolledigeArray[2] = "Ik heb jonge kinderen"
+                console.log("test: jonge kinderen");
+            }else {
+                gebruikersInputVolledigeArray[2] = "Ik heb geen jonge kinderen"
+            }
+        }
+
+        if (i != gebruikersInputVolledigeArray.length-1){
+            keuzesTekst += `Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}, `;
+        }else {
+            keuzesTekst += `Keuze ${i+1}: ${gebruikersInputVolledigeArray[i]}.`;
+        }
     }
 
     keuzesParagraaf.innerText = keuzesTekst;
